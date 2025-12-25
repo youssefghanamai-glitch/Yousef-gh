@@ -1,725 +1,1780 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* --- VARIABLES & RESETS --- */
+:root {
+    /* Default: Dark Mode Colors */
+    --primary-bg: #04364A;
+    --secondary-bg: #176B87;
+    --glass-bg: rgba(23, 107, 135, 0.8);
+    --text-color: #DAFFFB;
+    --heading-color: #64CCC5;
+    --accent-blue: #64CCC5;
+    --accent-blue-dark: #378E89;
+    --accent-light: #DAFFFB;
+    --text-dark-on-accent: #04364A;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --font-en: 'Inter', sans-serif;
+    --font-ar: 'Cairo', sans-serif;
+    --glow-color: #64CCC5;
+}
 
-    // --- TRANSLATIONS & LANGUAGE SWITCHER ---
-    const translations = {
-        en: {
-            brand: "YG",
-            nav_about: "About",
-            nav_offers: "Offers",
-            nav_portfolio: "Portfolio",
-            nav_skills: "Skills",
-            nav_testimonials: "Testimonials",
-            nav_contact: "Contact",
-            hero_name: "Youssef Ghannam",
-            hero_tagline: "Graphic Designer & Video Editor",
-            hero_button: "Discover More",
-            about_title: "About Me",
-            about_p1: "Every successful project begins with one simple question: how can we deliver the right idea?<br><br>I'm Yousef Ghannam — a graphic designer and video editor with over 3 years of hands-on experience. Throughout my journey, I’ve collaborated with more than 40 clients across various industries, including education and food & beverage, helping brands communicate visually and connect meaningfully with their audiences.<br><br>My work includes redesigning the visual identity for two restaurant brands, which resulted in a 120% increase in engagement in just one month. I've also created over 150 pieces of visual content — from book covers and YouTube thumbnails to Reels — that have helped educators increase their reach and demand.<br><br>Although I didn’t formally study design, my passion for the field led me to learn through real-world experience, continuous practice, and a deep understanding of what works in today’s market. My focus remains on crafting compelling brand identities, editing engaging videos, and designing visuals that not only look good but serve a purpose.",
-            offers_title: "Special Offers",
+body.light-mode {
+    /* Light Mode Colors */
+    --primary-bg: #F0F8FF;
+    --secondary-bg: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --text-color: #04364A;
+    --heading-color: #176B87;
+    --accent-blue: #176B87;
+    --accent-blue-dark: #04364A;
+    --accent-light: #04364A;
+    --text-dark-on-accent: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
 
-            // Weekly Package
-            offer1_title: "Weekly Follow-up",
-            offer1_f1: "4 Pro Montage Videos (1/Week)",
-            offer1_f2: "4 Attractive Thumbnails",
-            offer1_f3: "Audio & Video Quality Improvement",
-            offer1_f4: "Fast Delivery (48h)",
-            offer1_f5: "Suggested Posting Plan (Bonus)",
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            // Intensive Package
-            offer2_title: "Intensive Curriculum",
-            offer2_f1: "8 Explainer Videos (2/Week)",
-            offer2_f2: "8 Professional Thumbnails",
-            offer2_f3: "4 Ad Poster Designs",
-            offer2_f4: "Free Ad Campaign Management",
-            offer2_f5: "Camera Presence Tips",
-            offer2_f6: "4 Strong Reels",
+body {
+    font-family: var(--font-ar);
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: var(--text-color);
+    background-color: var(--primary-bg);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    cursor: none;
+    /* Hide default cursor */
+}
 
-            // Viral Package (Best Value)
-            offer3_title: "Viral & Trending",
-            offer3_f1: "6 Long Explainer Videos",
-            offer3_f2: "3 Viral Style Reels",
-            offer3_f3: "6 High-Quality Thumbnails",
-            offer3_f4: "6 Strong Ad Posters",
-            offer3_f5: "Interactive Content Plan",
-            offer3_f6: "Top Priority for Execution & Edits",
-            offer3_extra: "2 Review/Rules Posters",
-            offer1_extra: "Review Poster",
-            offer2_extra: "Book Cover Design",
-            offer2_new1: "Rules Poster or Summary",
-            offer2_new2: "Certificate",
-            offer2_new3: "Ad Campaign Scheduling File (free)",
-            offer2_f3: "8 Social Media Ad Posters",
+body.no-scroll {
+    overflow: hidden;
+}
 
-            best_value: "Best Value",
-            contact_for_price: "Contact for Price",
-            portfolio_title: "Some of My Work",
-            portfolio_button: "View Project",
-            portfolio1_title: "Restaurant Brand Redesign",
-            portfolio1_p: "Led a complete brand identity overhaul for two local restaurants, significantly boosting their online presence and customer interaction.",
-            portfolio2_title: "Educational Content Series",
-            portfolio2_p: "Designed and produced over 150 engaging visual materials for educational services, including presentations, infographics, and video overlays.",
-            portfolio3_title: "Reels Video Editing",
-            portfolio3_p: "Specialized in fast-paced and engaging video editing for social media Reels and advertisements, optimizing content for maximum retention.",
-            portfolio4_title: "Thumbnail Design",
-            portfolio4_p: "Created captivating and click-worthy thumbnails for YouTube videos. Focused on visual hierarchy and compelling imagery to increase click-through rates.",
-            portfolio5_title: "BUNZ – Restaurant Brand Identity Design",
-            portfolio5_p: "Created a full visual identity for BUNZ, a modern burger restaurant. The project included logo design, color palette, typography, and branded packaging, helping establish a bold and cohesive brand presence.",
-            skills_title: "Skills",
-            skill1_title: "Graphic Design",
-            skill1_p: "Mastering Adobe tools like Photoshop, Illustrator, and InDesign.",
-            skill2_title: "Video Editing & Production",
-            skill2_p: "Proficient in Adobe Premiere Pro & CapCut for producing professional videos.",
-            skill5_title: "Creativity & Innovation",
-            skill5_p: "Generating fresh and original ideas and delivering unique design solutions.",
-            skill7_title: "Communication & Collaboration",
-            skill7_p: "Building strong client relationships and working effectively within teams.",
-            testimonials_title: "Testimonials",
-            contact_title: "Ready to Bring Your Vision to Life?",
-            contact_p: "Let's connect and discuss how I can help your brand shine.",
-            contact_whatsapp: "WhatsApp",
-            footer_text: "&copy; 2025 Youssef Ghannam. All rights reserved.",
-            custom_pkg_title: "Design Your Own Package",
-            custom_pkg_desc: "These are standard individual rates. (Save more by choosing our monthly packages above 👆)",
-            srv_filming: "Lecture Filming",
-            srv_filming_note: "Select Lectures & Duration per Lecture",
-            lbl_lectures: "Lectures",
-            lbl_hours_per_lec: "Hours/Lecture",
-            srv_thumbnail: "Thumbnail",
-            srv_thumbnail_note: "High Quality",
-            srv_reels: "Reels Video (1 Minute)",
-            srv_reels_note: "Pro Editing",
-            srv_ad: "Ad Design",
-            srv_ad_note: "Social Media Poster",
-            srv_book_cover: "Book Cover",
-            srv_book_cover_note: "Professional Print Design",
-            srv_certificate: "Certificate",
-            srv_certificate_note: "Honorary Design for Students",
-            srv_rules_poster: "Rules Poster",
-            srv_rules_poster_note: "Classroom Guidelines Design",
-            custom_total_label: "Estimated Total:",
-            custom_send_btn: "Send Request Now",
-            custom_calc_btn: "Calculate Price",
-            custom_edit_btn: "Edit",
-            custom_hint: "For better rates, check our monthly packages above!"
-        },
-        ar: {
-            brand: "YG",
-            nav_about: "من أنا",
-            nav_offers: "العروض",
-            nav_portfolio: "أعمالي",
-            nav_skills: "المهارات",
-            nav_testimonials: "آراء العملاء",
-            nav_contact: "تواصل معي",
-            hero_name: "يوسف غنام",
-            hero_tagline: "مصمم جرافيك ومحرر فيديو",
-            hero_button: "اكتشف المزيد",
-            about_title: "من أنا",
-            about_p1: "كل مشروع ناجح يبدأ بسؤال بسيط واحد: كيف نقدّم الفكرة الصحيحة؟<br><br>أنا يوسف غنام — مصمم جرافيك ومحرر فيديو بخبرة عملية تزيد عن 3 سنوات. خلال رحلتي، تعاونت مع أكثر من 40 عميل في مختلف المجالات، بما في ذلك التعليم والأغذية والمشروبات، وساعدت العلامات التجارية على التواصل بصريًا والتواصل بشكل هادف مع جماهيرها.<br><br>يتضمن عملي إعادة تصميم الهوية البصرية لعلامتين تجاريتين لمطاعم، مما أدى إلى زيادة بنسبة 120٪ في التفاعل خلال شهر واحد فقط. كما قمت بإنشاء أكثر من 150 قطعة من المحتوى المرئي — من أغلفة الكتب والصور المصغرة على يوتيوب إلى مقاطع Reels — والتي ساعدت المعلمين على زيادة انتشارهم والطلب على خدماتهم.<br><br>على الرغم من أنني لم أدرس التصميم بشكل رسمي، إلا أن شغفي بالمجال دفعني للتعلم من خلال الخبرة الواقعية، والممارسة المستمرة، والفهم العميق لما ينجح في سوق اليوم. يبقى تركيزي على صياغة هويات تجارية مقنعة، وتحرير فيديوهات جذابة، وتصميم مرئيات لا تبدو جيدة فحسب، بل تخدم هدفاً محدداً.",
-            offers_title: "باقات العروض الخاصة",
+html[lang="en"] body {
+    font-family: var(--font-en);
+}
 
-            // Weekly Package (Arabic)
-            offer1_title: "باقة المتابعة الأسبوعية",
-            offer1_f1: "4 فيديوهات مونتاج احترافي (فيديو كل أسبوع)",
-            offer1_f2: "4 صور مصغرة (Thumbnails) جذابة",
-            offer1_f3: "تحسين جودة الصوت والصورة الحالية",
-            offer1_f4: "تسليم سريع خلال 48 ساعة من التصوير",
-            offer1_f5: "خطة نشر مقترحة (Bonus)",
+/* --- CUSTOM CURSOR --- */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
 
-            offer1_extra: "بوستر مراجعة",
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--heading-color);
+}
 
-            // Intensive Package (Arabic)
-            offer2_title: "باقة المنهج المكثف",
-            offer2_f1: "8 فيديوهات شرح/محتوى (2 أسبوعياً)",
-            offer2_f2: "8 صور مصغرة احترافية",
-            offer2_f3: "8 تصميمات بوسترز للسوشيال ميديا للإعلانات",
-            offer2_f4: "ملف إدارة جدولة الحملات الإعلانية مجاناً (Setup & Monitoring)",
-            offer2_f5: "نصائح لتحسين الظهور أمام الكاميرا",
-            offer2_f6: "4 فيديوهات ريلز قوية",
-            offer2_extra: "تصميم غلاف مذكرة",
-            offer2_new1: "تصميم بوستر قوانين أو ملخص",
-            offer2_new2: "شهادة تقدير",
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--heading-color);
+}
 
-            // Viral Package (Arabic) - FEATURED
-            offer3_title: "باقة الانتشار والتريند",
-            offer3_f1: "6 فيديوهات شرح طويلة (يوتيوب/فيسبوك)",
-            offer3_f2: "3 فيديوهات ريلز سريعة الانتشار (Viral Style)",
-            offer3_f3: "6 صور مصغرة عالية الجودة",
-            offer3_f4: "6 بوسترات إعلانية قوية",
-            offer3_f5: "خطة محتوى تفاعلية لزيادة المتابعين",
-            offer3_f6: "أولوية قصوى في التنفيذ والتعديلات",
-            offer3_extra: "2 بوستر القوانين مراجعة",
+body:hover .cursor-dot,
+body:hover .cursor-outline {
+    opacity: 1;
+}
 
-            best_value: "الأكثر طلباً (Best Value)",
-            contact_for_price: "تواصل للسعر",
-            portfolio_title: "بعض من أعمالي",
-            portfolio_button: "عرض المشروع",
-            portfolio1_title: "إعادة تصميم علامة تجارية لمطعم",
-            portfolio1_p: "قمت بإعادة تصميم الهوية التجارية الكاملة لمطعمين محليين، مما أدى إلى تعزيز وجودهم على الإنترنت وتفاعل العملاء بشكل كبير.",
-            portfolio2_title: "سلسلة محتوى تعليمي",
-            portfolio2_p: "صممت وأنتجت أكثر من 150 مادة مرئية جذابة للخدمات التعليمية، بما في ذلك العروض التقديمية والرسوم البيانية وتراكبات الفيديو.",
-            portfolio3_title: "مونتاج فيديوهات Reels",
-            portfolio3_p: "متخصص في تحرير الفيديو سريع الخطى والجذاب لمقاطع Reels والإعلانات على وسائل التواصل الاجتماعي، مع تحسين المحتوى لتحقيق أقصى قدر من الاحتفاظ.",
-            portfolio4_title: "تصميم الصور المصغرة",
-            portfolio4_p: "قمت بإنشاء صور مصغرة جذابة ومغرية للنقر لمقاطع فيديو يوتيوب. ركزت على التسلسل الهرمي البصري والصور المقنعة لزيادة معدلات النقر.",
-            portfolio5_title: "BUNZ – تصميم هوية بصرية لمطعم",
-            portfolio5_p: "تم إنشاء هوية بصرية كاملة لـ BUNZ، وهو مطعم برجر عصري. شمل المشروع تصميم الشعار، ولوحة الألوان، والخطوط، والتغليف، مما ساعد على تأسيس حضور قوي ومتماسك للعلامة التجارية.",
-            skills_title: "المهارات",
-            skill1_title: "التصميم الجرافيكي",
-            skill1_p: "إتقان أدوات Adobe مثل فوتوشوب، إليستريتور، وإن ديزاين.",
-            skill2_title: "تحرير ومونتاج الفيديو",
-            skill2_p: "خبرة في استخدام Adobe Premiere Pro و CapCut لإنتاج فيديوهات احترافية.",
-            skill5_title: "الإبداع والابتكار",
-            skill5_p: "توليد أفكار جديدة وتقديم حلول تصميم فريدة.",
-            skill7_title: "التواصل والتعاون",
-            skill7_p: "بناء علاقات قوية مع العملاء والعمل بفعالية ضمن فرق.",
-            testimonials_title: "آراء العملاء",
-            contact_title: "هل أنت مستعد لتحويل رؤيتك إلى حقيقة؟",
-            contact_p: "لنتواصل ونناقش كيف يمكنني مساعدة علامتك التجارية على التألق.",
-            contact_whatsapp: "واتساب",
-            contact_instagram: "انستغرام",
-            contact_email: "البريد الإلكتروني",
-            footer_text: "© 2025 يوسف غنام. جميع الحقوق محفوظة.",
-            custom_pkg_title: "صمم باقتك بنفسك",
-            custom_pkg_desc: "الأسعار هنا هي أسعار الخدمات الفردية. (وفر أكثر باختيار الباقات الشهرية بالأعلى 👆)",
-            srv_filming: "تصوير محاضرات (فيديو)",
-            srv_filming_note: "حدد عدد المحاضرات ومدة المحاضرة الواحدة",
-            lbl_lectures: "المحاضرات",
-            lbl_hours_per_lec: "ساعات لكل محاضرة",
-            srv_thumbnail: "صورة مصغرة (Thumbnail)",
-            srv_thumbnail_note: "جودة عالية جذابة",
-            srv_reels: "فيديو ريلز (1 دقيقة)",
-            srv_reels_note: "مونتاج احترافي سريع",
-            srv_ad: "تصميم إعلان (Poster)",
-            srv_ad_note: "سوشيال ميديا",
-            srv_book_cover: "غلاف مذكرة (Book Cover)",
-            srv_book_cover_note: "تصميم احترافي جاهز للطباعة",
-            srv_certificate: "شهادة تقدير (Certificate)",
-            srv_certificate_note: "تصميم مميز لتكريم الطلاب",
-            srv_rules_poster: "بوستر القوانين (Rules)",
-            srv_rules_poster_note: "تصميم إرشادي للقاعة/السنتر",
-            custom_total_label: "السعر الإجمالي (Individual Pricing):",
-            custom_send_btn: "أرسل الطلب الآن",
-            custom_calc_btn: "احسب السعر",
-            custom_edit_btn: "تعديل",
-            custom_hint: "للحصول على أسعار أوفر، راجع الباقات الشهرية بالأعلى!"
-        }
-    };
+.cursor-interact {
+    transform: translate(-50%, -50%) scale(1.5);
+}
 
-    function updateLanguage(lang) {
-        document.querySelectorAll('[data-lang-key]').forEach(element => {
-            const key = element.getAttribute('data-lang-key');
-            if (translations[lang][key]) {
-                if (element.children.length > 0 && element.tagName === 'LI') {
-                    // Preserve icon for list items
-                    const icon = element.querySelector('i');
-                    element.innerHTML = '';
-                    if (icon) element.appendChild(icon);
-                    element.appendChild(document.createTextNode(' ' + translations[lang][key]));
-                } else if (element.children.length > 0 && element.tagName === 'A') {
-                    // Button with icon
-                    const icon = element.querySelector('i');
-                    const span = element.querySelector('span');
-                    if (span) span.innerText = translations[lang][key];
-                    else element.innerText = translations[lang][key];
-                } else {
-                    element.textContent = translations[lang][key];
-                }
-            }
-        });
-        document.documentElement.lang = lang;
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+a,
+button {
+    cursor: none;
+    /* Apply to all interactive elements */
+}
 
-        if (typeof SplitType !== 'undefined' && document.querySelector('#about-content p')) {
-            try {
-                const aboutP = document.querySelector('#about-content p');
-                aboutP.style.opacity = '1';
-                new SplitType(aboutP, { types: 'words' });
-            } catch (e) { }
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.glass-section {
+    background-color: var(--glass-bg);
+    border-radius: 24px;
+    margin: 2.5rem auto;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 60px 40px;
+    text-align: center;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+body.light-mode .glass-section {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    // Add event listener for Lang Switcher
-    const langSwitcher = document.getElementById('lang-switcher');
-    if (langSwitcher) {
-        langSwitcher.addEventListener('click', () => {
-            const currentLang = document.documentElement.lang;
-            const newLang = currentLang === 'ar' ? 'en' : 'ar';
-            langSwitcher.textContent = newLang === 'ar' ? 'English' : 'عربي';
-            updateLanguage(newLang);
-        });
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background-color: rgba(4, 54, 74, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+body.light-mode .navbar {
+    background-color: rgba(240, 248, 255, 0.6);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: var(--accent-light);
+    font-size: 1.8em;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.4s ease;
+    z-index: 1001;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.4s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--heading-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--heading-color);
+}
+
+.nav-button {
+    background: transparent;
+    color: var(--accent-light);
+    border: 2px solid var(--accent-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+    font-size: 1em;
+}
+
+.nav-button:hover {
+    background-color: var(--heading-color);
+    color: var(--text-dark-on-accent);
+    border-color: var(--heading-color);
+    transform: scale(1.05);
+}
+
+#theme-switcher {
+    font-size: 1.2em;
+    padding: 8px 10px;
+}
+
+li {
+    list-style: none;
+}
+
+/* --- HAMBURGER MENU --- */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background: var(--accent-light);
+    border-radius: 2px;
+    transition: all 0.25s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--accent-light);
+    border-radius: 2px;
+    transition: all 0.25s ease-in-out;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+.nav-open .hamburger {
+    background: transparent;
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.nav-open .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10vh;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--primary-bg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/11.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    transition: background-color 0.4s ease;
+}
+
+body.light-mode .hero-section::before {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--heading-color);
+    background: var(--accent-light);
+    margin-bottom: 20px;
+    box-shadow: 0 0 40px var(--shadow-color);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 0 60px var(--heading-color);
+}
+
+.hero-section h1 {
+    font-size: 4.2em;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 8px var(--shadow-color);
+}
+
+.hero-section .tagline {
+    font-size: 2em;
+    margin-bottom: 40px;
+    opacity: 0.98;
+    text-shadow: 2px 2px 5px var(--shadow-color);
+}
+
+body.light-mode .hero-section h1,
+body.light-mode .hero-section .tagline {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- BUTTONS & EFFECTS --- */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 80%);
+    transition: left 0.6s ease-in-out;
+    transform: skewX(-25deg);
+}
+
+html[dir="rtl"] .btn::before {
+    right: -100%;
+    left: auto;
+    transform: skewX(25deg);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+html[dir="rtl"] .btn:hover::before {
+    right: 100%;
+    left: auto;
+}
+
+.primary-btn {
+    background-color: var(--heading-color);
+    color: var(--text-dark-on-accent);
+    border: 2px solid var(--heading-color);
+    font-size: 1.25em;
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-blue-dark);
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px var(--heading-color);
+}
+
+/* --- HEADINGS & SECTIONS --- */
+h2 {
+    font-size: 3.5em;
+    letter-spacing: 1.5px;
+    margin-bottom: 60px;
+    color: var(--heading-color);
+    text-shadow: 1px 1px 3px var(--shadow-color);
+    position: relative;
+    display: inline-block;
+    transition: color 0.4s ease;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    width: 80px;
+    height: 4px;
+    background-color: var(--heading-color);
+    border-radius: 2px;
+    transition: background-color 0.4s ease;
+}
+
+/* --- ABOUT SECTION ENHANCEMENTS --- */
+.about-wrapper {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    /* Organic blob shape */
+    background-color: var(--heading-color);
+    opacity: 0.08;
+    z-index: 0;
+    animation: float 20s ease-in-out infinite;
+    transition: background-color 0.4s ease;
+}
+
+.shape1 {
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.shape2 {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    right: 8%;
+    animation-delay: 7s;
+}
+
+.shape3 {
+    width: 60px;
+    height: 60px;
+    bottom: 0;
+    left: 20%;
+    animation-delay: 14s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     }
 
-    // Set Initial Content
-    const initialLang = document.documentElement.lang || 'ar';
-    if (document.querySelector('#about-content p') && document.querySelector('#about-content p').innerText.trim() === '') {
-        document.querySelector('#about-content p').innerText = translations[initialLang].about_p1;
+    50% {
+        transform: translateY(-40px) rotate(180deg);
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
     }
 
-    // --- GENERIC UTILS (Theme, Nav, Cursor) ---
-    const themeSwitcher = document.getElementById('theme-switcher');
-    const body = document.body;
-    const themeIcon = themeSwitcher ? themeSwitcher.querySelector('i') : null;
-    if (themeSwitcher) {
-        themeSwitcher.addEventListener('click', () => {
-            const current = localStorage.getItem('theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', next);
-            body.classList.toggle('light-mode', next === 'light');
-            if (themeIcon) {
-                themeIcon.classList.toggle('fa-sun', next === 'dark');
-                themeIcon.classList.toggle('fa-moon', next === 'light');
-            }
-        });
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        body.classList.toggle('light-mode', savedTheme === 'light');
-        if (themeIcon) {
-            themeIcon.classList.toggle('fa-sun', savedTheme === 'dark');
-            themeIcon.classList.toggle('fa-moon', savedTheme === 'light');
-        }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+#about-content p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#about-content .char,
+#about-content .word {
+    transform: translateY(120px);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-block;
+}
+
+/* --- PORTFOLIO & SKILLS CARDS --- */
+.card {
+    background-color: var(--secondary-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    box-shadow: 0 15px 40px var(--heading-color);
+}
+
+body.light-mode .card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-grid,
+.skills-grid {
+    display: grid;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 50px;
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 5px solid var(--accent-blue-dark);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.03);
+}
+
+.portfolio-item h3 {
+    font-size: 1.9em;
+    margin: 25px 0 15px;
+    color: var(--heading-color);
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html[lang="en"] .portfolio-item h3 {
+    font-size: 1.6em;
+}
+
+.portfolio-item p {
+    padding: 0 25px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.portfolio-item .btn {
+    margin: 0 25px 25px;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    border: 2px solid var(--heading-color);
+    color: var(--heading-color);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.portfolio-item .btn:hover {
+    background-color: var(--heading-color);
+    color: var(--text-dark-on-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--heading-color);
+}
+
+.skill-card {
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-card i {
+    font-size: 3em;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-card:hover i {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.skill-card h3 {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+    min-height: 50px;
+}
+
+html[lang="ar"] .skill-card h3 {
+    min-height: 0;
+}
+
+.skill-card p {
+    opacity: 0.9;
+}
+
+/* --- TESTIMONIALS SECTION --- */
+@keyframes animated-gradient {
+    0% {
+        background-position: 0% 50%;
     }
 
-    // Mobile Nav
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-open');
-            navToggle.classList.toggle('nav-open');
-            document.body.classList.toggle('no-scroll');
-        });
-        navLinks.querySelectorAll('a, button').forEach(l => {
-            l.addEventListener('click', () => {
-                navLinks.classList.remove('nav-open');
-                navToggle.classList.remove('nav-open');
-                document.body.classList.remove('no-scroll');
-            });
-        });
+    50% {
+        background-position: 100% 50%;
     }
 
-    // Custom Cursor
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-        if (cursorDot) { cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`; }
-        if (cursorOutline) cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-    });
-    document.querySelectorAll('a, button, .card, input, label').forEach((el) => {
-        el.addEventListener('mouseover', () => cursorOutline?.classList.add('cursor-interact'));
-        el.addEventListener('mouseleave', () => cursorOutline?.classList.remove('cursor-interact'));
-    });
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const offsetPosition = targetElement.offsetTop - navbarHeight - 20;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            }
-        });
-    });
+#testimonials {
+    padding: 80px 0;
+    position: relative;
+    transition: background-color 0.4s ease;
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg), var(--primary-bg));
+    background-size: 200% 200%;
+    animation: animated-gradient 15s ease infinite;
+}
 
-    // Particle BG
-    const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const numParticles = 50;
-        const initParticles = () => {
-            particles = [];
-            for (let i = 0; i < numParticles; i++) {
-                const r = Math.random() * 2 + 1;
-                const x = Math.random() * (canvas.width - r * 2) + r;
-                const y = Math.random() * (canvas.height - r * 2) + r;
-                const c = body.classList.contains('light-mode') ? 'rgba(4, 54, 74, 0.4)' : `rgba(100, 204, 197, ${Math.random() * 0.3 + 0.1})`;
-                const v = { x: (Math.random() - 0.5) * 0.5, y: (Math.random() - 0.5) * 0.5 };
-                particles.push({ x, y, r, c, v });
-            }
-        };
-        const animate = () => {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                if (p.x + p.r > canvas.width || p.x - p.r < 0) p.v.x = -p.v.x;
-                if (p.y + p.r > canvas.height || p.y - p.r < 0) p.v.y = -p.v.y;
-                p.x += p.v.x; p.y += p.v.y;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = p.c;
-                ctx.fill();
-            });
-        };
-        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
+body.light-mode #testimonials {
+    background: linear-gradient(45deg, #e0f0ff, #ffffff, #e0f0ff);
+    background-size: 200% 200%;
+    animation: animated-gradient 15s ease infinite;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    min-height: 260px;
+    position: relative;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-container::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.testimonial-card {
+    flex: 0 0 420px;
+    max-width: 420px;
+    min-width: 320px;
+    background: var(--secondary-bg);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px var(--shadow-color);
+    padding: 0;
+    margin: 0 20px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    height: 260px;
+    overflow: hidden;
+    transition: box-shadow 0.4s, transform 0.4s;
+    position: relative;
+    z-index: 2;
+    scroll-snap-align: center;
+}
+
+.testimonial-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: contain;
+    background: #fff;
+    box-shadow: 0 6px 24px var(--shadow-color);
+    transition: transform 0.4s, box-shadow 0.4s;
+    display: block;
+    margin: 0 auto;
+}
+
+.testimonial-card:hover img {
+    transform: scale(1.04);
+    box-shadow: 0 18px 48px var(--heading-color);
+}
+
+.testimonial-controls {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.testimonial-controls button {
+    background: var(--heading-color);
+    color: var(--text-dark-on-accent);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5em;
+    transition: background 0.3s, transform 0.3s;
+    margin: 0;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-controls button:hover {
+    background: var(--accent-blue-dark);
+    transform: scale(1.13);
+}
+
+/* --- CONTACT SECTION --- */
+#contact.glass-section {
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(23, 107, 135, 0.95), var(--glass-bg) 40%);
+    transition: background 0.2s ease;
+}
+
+body.light-mode #contact.glass-section {
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.9), var(--glass-bg) 40%);
+}
+
+#contact.glass-section:hover {
+    box-shadow: 0 10px 50px -10px var(--heading-color);
+}
+
+@keyframes icon-shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
     }
 
-    // Tilt
-    if (window.innerWidth > 768 && typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".card"), { max: 10, speed: 400, glare: true, "max-glare": 0.2 });
+    25% {
+        transform: rotate(15deg);
     }
 
-    // --- 🚀 NEW FEATURE: PACKAGE DETAILS OVERLAY & DATA (UPDATED) ---
-    const packagesData = {
-        'basic': {
-            title: 'باقة المتابعة الأسبوعية',
-            image: '../images/BAC1.png',
-            audience: 'مثالية للمدرسين الجدد أو صناع المحتوى الذين يرغبون في الاستمرارية بمحتوى ثابت ومتميز شهرياً.',
-            features: [
-                '4 فيديوهات مونتاج احترافي (فيديو كل أسبوع)',
-                '4 صور مصغرة (Thumbnails) جذابة لزيادة النقرات',
-                'تسليم سريع خلال 48 ساعة من التصوير',
-                'خطة نشر مقترحة (Bonus)',
-                'بوستر مراجعة'
-            ],
-            price: '1500 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">2000</span>'
-        },
-        'pro': {
-            title: 'باقة المنهج المكثف',
-            image: '../images/BAC2.png',
-            audience: 'صممت خصيصاً للمدرسين الذين يصورون منهجاً كاملاً ويحتاجون إلى إنتاج غزير بجودة عالية.',
-            features: [
-                '8 فيديوهات شرح/محتوى (2 أسبوعياً)',
-                '8 صور مصغرة احترافية',
-                '8 تصميمات بوسترز للسوشيال ميديا للإعلانات',
-                '4 فيديوهات ريلز قوية',
-                'تصميم غلاف مذكرة',
-                'تصميم بوستر قوانين أو ملخص',
-                'شهادة تقدير',
-                'ملف إدارة جدولة الحملات الإعلانية مجاناً (Setup & Monitoring)',
-                'نصائح لتحسين الظهور أمام الكاميرا'
-            ],
-            price: '6000 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">6500</span>'
-        },
-        'vip': {
-            title: 'باقة الانتشار والتريند',
-            image: '../images/BAC3.png',
-            audience: 'للأكاديميات والمدرسين الكبار الباحثين عن التوسع السريع والسيطرة على المنصات.',
-            features: [
-                '6 فيديوهات شرح طويلة (يوتيوب/فيسبوك)',
-                '3 فيديوهات ريلز سريعة الانتشار (Viral Style)',
-                '6 صور مصغرة عالية الجودة',
-                '6 بوسترات إعلانية قوية',
-                'خطة محتوى تفاعلية لزيادة المتابعين',
-                'أولوية قصوى في التنفيذ والتعديلات',
-                '2 بوستر القوانين مراجعة'
-            ],
-            price: '4250 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">5000</span>'
-        }
-    };
-
-    const packageOverlay = document.getElementById('package-overlay');
-    const closeOverlayBtn = document.querySelector('.close-overlay');
-    const viewDetailBtns = document.querySelectorAll('.view-package-detail');
-    const pkgBookBtn = document.getElementById('pkg-book-btn');
-    const pkgTitle = document.getElementById('pkg-title');
-    const pkgImg = document.getElementById('pkg-img');
-    const pkgAudience = document.getElementById('pkg-audience');
-    const pkgFeatures = document.getElementById('pkg-features');
-    const pkgPrice = document.getElementById('pkg-price');
-
-    let currentSelectedPackageId = '';
-
-    viewDetailBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pkgId = btn.getAttribute('data-package-id');
-            const data = packagesData[pkgId];
-
-            if (data) {
-                currentSelectedPackageId = pkgId;
-                pkgTitle.innerText = data.title;
-                pkgImg.src = data.image;
-                pkgImg.onerror = function () { this.src = 'https://placehold.co/800x400/04364A/64CCC5?text=Package+Image'; };
-                pkgAudience.innerText = data.audience;
-                pkgPrice.innerHTML = data.price;
-
-                pkgFeatures.innerHTML = '';
-                data.features.forEach(feat => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<i class="fas fa-check-circle"></i> ${feat}`;
-                    pkgFeatures.appendChild(li);
-                });
-
-                packageOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
-
-    if (closeOverlayBtn) {
-        closeOverlayBtn.addEventListener('click', () => {
-            packageOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+    50% {
+        transform: rotate(-15deg);
     }
 
-    if (pkgBookBtn) {
-        pkgBookBtn.addEventListener('click', () => {
-            openWizard(currentSelectedPackageId);
-        });
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.contact-btn:hover i {
+    animation: icon-shake 0.5s ease;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFF;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    min-width: 220px;
+    justify-content: center;
+    font-size: 1.15em;
+}
+
+.contact-btn i {
+    font-size: 2em;
+}
+
+html[dir="rtl"] .contact-btn i {
+    margin-left: 15px;
+}
+
+html[dir="ltr"] .contact-btn i {
+    margin-right: 15px;
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.whatsapp:hover {
+    background-color: #1DA851;
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+}
+
+.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.instagram:hover {
+    opacity: 0.9;
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(220, 39, 67, 0.5);
+}
+
+.email {
+    background-color: #0077B5;
+}
+
+.email:hover {
+    background-color: #005582;
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.5);
+}
+
+/* --- FOOTER --- */
+footer {
+    background: var(--primary-bg);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 1.0em;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+body.light-mode footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 3.5em;
     }
 
-    // --- WIZARD FORM LOGIC ---
-    const wizardModal = document.getElementById('wizard-modal');
-    const closeWizardBtn = document.querySelector('.close-modal');
-    const wizardForm = document.getElementById('wizard-form');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const steps = document.querySelectorAll('.step');
-    const progressFill = document.getElementById('progress-fill');
-    let currentStep = 1;
-    let selectedPackageName = "";
-
-    function openWizard(pkgId) {
-        const map = { 'basic': 'باقة المتابعة الأسبوعية', 'pro': 'باقة المنهج المكثف', 'vip': 'باقة الانتشار والتريند' };
-        selectedPackageName = map[pkgId] || "باقة غير محددة";
-        wizardModal.classList.add('active');
+    .hero-section .tagline {
+        font-size: 1.8em;
+        padding: 0 15px;
     }
 
-    if (closeWizardBtn) {
-        closeWizardBtn.addEventListener('click', () => {
-            wizardModal.classList.remove('active');
-            if (!packageOverlay.classList.contains('active')) {
-                document.body.style.overflow = 'auto';
-            }
-        });
+    .glass-section {
+        padding: 50px 30px;
     }
 
-    function updateWizard() {
-        steps.forEach(step => {
-            step.classList.remove('active');
-            if (parseInt(step.dataset.step) === currentStep) {
-                step.classList.add('active');
-            }
-        });
-        const progress = ((currentStep - 1) / (steps.length - 1)) * 100;
-        if (progressFill) progressFill.style.width = `${progress}%`;
-
-        if (currentStep === 1) {
-            prevBtn.style.display = 'none';
-            nextBtn.textContent = 'التالي';
-        } else if (currentStep === steps.length) {
-            prevBtn.style.display = 'inline-block';
-            nextBtn.textContent = 'إرسال الطلب (WhatsApp)';
-        } else {
-            prevBtn.style.display = 'inline-block';
-            nextBtn.textContent = 'التالي';
-        }
+    h2 {
+        font-size: 2.8em;
     }
 
-    if (nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const currentStepEl = document.querySelector(`.step[data-step="${currentStep}"]`);
-            const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
-            let valid = true;
-            inputs.forEach(i => { if (!i.checkValidity()) { i.reportValidity(); valid = false; } });
+    body {
+        font-size: 1.05em;
+    }
+}
 
-            if (valid) {
-                if (currentStep < steps.length) {
-                    currentStep++;
-                    updateWizard();
-                } else {
-                    sendToWhatsApp();
-                }
-            }
-        });
-
-        prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentStep > 1) { currentStep--; updateWizard(); }
-        });
+@media (max-width: 768px) {
+    .hero-section {
+        justify-content: center;
+        padding-bottom: 0;
     }
 
-    function sendToWhatsApp() {
-        const formData = new FormData(wizardForm);
-        const data = Object.fromEntries(formData.entries());
-
-        const goals = [];
-        document.querySelectorAll('input[name="goal"]:checked').forEach(cb => goals.push(cb.value));
-        const platforms = [];
-        document.querySelectorAll('input[name="platform"]:checked').forEach(cb => platforms.push(cb.value));
-
-        let message = `*طلب جديد من الموقع 🚀*\n\n`;
-        message += `*الباقة المختارة:* ${selectedPackageName}\n`;
-        message += `*الاسم:* ${data.name || ''}\n`;
-        message += `*رقم الهاتف:* ${data.phone || ''}\n`;
-        message += `*الصفة:* ${data.role || ''}\n\n`;
-
-        message += `--- تفاصيل المشروع ---\n`;
-        message += `*الهدف:* ${goals.join('، ')}\n`;
-        message += `*الخدمة:* ${data.service}\n`;
-        message += `*الوضع الحالي:* ${data.status}\n\n`;
-
-        message += `--- الجمهور والستايل والهوية ---\n`;
-        message += `*الجمهور:* ${data.audience || 'غير محدد'}\n`;
-        message += `*الستايل:* ${data.style || 'غير محدد'}\n`;
-        message += `*المنصات:* ${platforms.join('، ')}\n\n`;
-
-        message += `--- الموعد ---\n`;
-        message += `*الموعد:* ${data.timeline || 'غير محدد'}\n`;
-
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappURL = `https://wa.me/201062680608?text=${encodedMessage}`;
-
-        window.open(whatsappURL, '_blank');
-
-        setTimeout(() => {
-            wizardModal.classList.remove('active');
-            packageOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            currentStep = 1;
-        }, 1000);
+    .nav-toggle {
+        display: block;
     }
 
-    // --- CUSTOM PACKAGE LOGIC (UPDATED) ---
-    const customInputs = document.querySelectorAll('.custom-pkg-wrapper .qty-input');
-    const calcCustomBtn = document.getElementById('calc-custom-btn');
-    const customSummary = document.getElementById('custom-summary');
-    const newTotalDisplay = document.getElementById('new-total-display');
-    const oldTotalDisplay = document.getElementById('old-total-display');
-    const savingsDisplay = document.getElementById('savings-display');
-    const sendCustomOrderBtn = document.getElementById('send-custom-order');
-    const reCalcBtn = document.getElementById('re-calc-btn');
-
-    // Helper to calculate totals
-    function calculateTotals() {
-        let totalNew = 0;
-
-        // 1. Calculate Filming (Special Logic: Lectures * HoursPerLec * rate)
-        const filmLecInput = document.querySelector('.film-lectures-input');
-        const filmHourInput = document.querySelector('.film-hours-input');
-
-        if (filmLecInput && filmHourInput) {
-            const lectures = parseInt(filmLecInput.value) || 0;
-            const hoursPerLec = parseInt(filmHourInput.value) || 0;
-            const rate = 150; // Rate per hour
-
-            if (lectures > 0 && hoursPerLec > 0) {
-                totalNew += (lectures * hoursPerLec * rate);
-            }
-        }
-
-        // 2. Calculate Other Inputs
-        customInputs.forEach(input => {
-            // Skip filming inputs as they are handled above
-            if (input.classList.contains('film-lectures-input') || input.classList.contains('film-hours-input')) return;
-
-            const price = parseFloat(input.dataset.price);
-            const qty = parseInt(input.value) || 0;
-            if (qty > 0) {
-                totalNew += price * qty;
-            }
-        });
-
-        return { totalNew };
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: left 0.3s ease-in-out;
+        padding-top: 60px;
     }
 
-    // Input Step Buttons
-    document.querySelectorAll('.qty-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const input = btn.parentElement.querySelector('input');
-            let val = parseInt(input.value) || 0;
-            if (btn.classList.contains('plus')) {
-                val++;
-            } else {
-                if (val > 0) val--;
-            }
-            input.value = val;
-            // Hide summary if user changes quantity, forcing them to re-calculate
-            if (customSummary) customSummary.style.display = 'none';
-            if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
-        });
-    });
-
-    // Reset view if input changes manually
-    if (customInputs) {
-        customInputs.forEach(inp => {
-            inp.addEventListener('input', () => {
-                if (customSummary) customSummary.style.display = 'none';
-                if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
-            });
-        });
+    .nav-links.nav-open {
+        left: 0;
     }
 
-    // Calculate Button Click
-    if (calcCustomBtn) {
-        calcCustomBtn.addEventListener('click', () => {
-            const { totalNew } = calculateTotals();
-
-            if (totalNew === 0) {
-                // Determine current lang for alert
-                const lang = document.documentElement.lang || 'ar';
-                const msg = lang === 'ar' ? 'يرجى اختيار خدمة واحدة على الأقل.' : 'Please select at least one service.';
-                alert(msg);
-                return;
-            }
-
-            // Update displays
-            if (newTotalDisplay) newTotalDisplay.innerText = totalNew;
-
-            // Show summary, hide calc button
-            if (customSummary) customSummary.style.display = 'block';
-            if (calcCustomBtn) calcCustomBtn.style.display = 'none';
-        });
+    .nav-links li {
+        transform: translateX(50px);
+        opacity: 0;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
-    // Edit Button Click
-    if (reCalcBtn) {
-        reCalcBtn.addEventListener('click', () => {
-            if (customSummary) customSummary.style.display = 'none';
-            if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
-        });
+    .nav-links.nav-open li {
+        transform: translateX(0);
+        opacity: 1;
     }
 
-    // Send WhatsApp
-    if (sendCustomOrderBtn) {
-        sendCustomOrderBtn.addEventListener('click', () => {
-            let items = [];
-            const { totalNew } = calculateTotals();
-
-            // 1. Add Filming Item
-            const filmLecInput = document.querySelector('.film-lectures-input');
-            const filmHourInput = document.querySelector('.film-hours-input');
-            if (filmLecInput && filmHourInput) {
-                const lectures = parseInt(filmLecInput.value) || 0;
-                const hours = parseInt(filmHourInput.value) || 0;
-                if (lectures > 0 && hours > 0) {
-                    const cost = lectures * hours * 150;
-                    items.push(`- تصوير محاضرات: ${lectures} محاضرات × ${hours} ساعات (الإجمالي: ${cost} EGP)`);
-                }
-            }
-
-            // 2. Add Other Items
-            customInputs.forEach(input => {
-                if (input.classList.contains('film-lectures-input') || input.classList.contains('film-hours-input')) return;
-
-                const qty = parseInt(input.value) || 0;
-                if (qty > 0) {
-                    const name = input.dataset.name;
-                    const price = parseFloat(input.dataset.price);
-                    items.push(`- ${name}: ${qty} (سعر: ${price * qty} EGP)`);
-                }
-            });
-
-            if (items.length === 0) return;
-
-            let msg = `*طلب باقة مخصصة (Custom Package)* 🛠️\n\n`;
-            msg += items.join('\n');
-            msg += `\n\n*الإجمالي (Individual Price):* ${totalNew} EGP`;
-            msg += `\n\nأرغب في تنفيذ هذه الخدمات.`;
-
-            const url = `https://wa.me/201062680608?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        });
+    .nav-links.nav-open li:nth-child(1) {
+        transition-delay: 0.1s;
     }
 
-});
+    .nav-links.nav-open li:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    .nav-links.nav-open li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.nav-open li:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    .nav-links.nav-open li:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.nav-open li:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    .nav-links.nav-open li:nth-child(7) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links a {
+        font-size: 1.5em;
+    }
+
+    .hero-section {
+        height: 80vh;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-section .tagline {
+        font-size: 1.4em;
+        margin-bottom: 30px;
+    }
+
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+
+    h2 {
+        font-size: 2.3em;
+        margin-bottom: 40px;
+    }
+
+    h2::after {
+        bottom: -15px;
+        width: 60px;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .glass-section {
+        margin: 1.5rem auto;
+        padding: 40px 20px;
+    }
+
+    #about-content p {
+        font-size: 1.1em;
+        line-height: 1.7;
+    }
+
+    .portfolio-grid,
+    .skills-grid {
+        gap: 25px;
+    }
+
+    .portfolio-item h3 {
+        font-size: 1.5em;
+        min-height: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    html[lang="en"] .portfolio-item h3 {
+        font-size: 1.3em;
+    }
+
+    .skill-card h3 {
+        font-size: 1.2em;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .contact-btn {
+        width: 80%;
+        max-width: 350px;
+        padding: 15px 25px;
+        font-size: 1.1em;
+    }
+
+    .testimonial-card {
+        flex: 0 0 85vw;
+        max-width: 85vw;
+        height: 50vw;
+    }
+
+    .testimonial-container {
+        min-height: 220px;
+    }
+
+    .testimonial-controls button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3em;
+    }
+
+    footer {
+        padding: 25px 0;
+    }
+
+    body {
+        font-size: 1.0em;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+    a,
+    button {
+        cursor: pointer;
+    }
+
+    body {
+        cursor: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+
+    .hero-section {
+        height: 75vh;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+        /* Adjusted for better readability on mobile */
+    }
+
+    .hero-section .tagline {
+        font-size: 1.2em;
+    }
+
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+
+    .primary-btn {
+        padding: 12px 28px;
+        font-size: 1.1em;
+    }
+
+    h2 {
+        font-size: 1.9em;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        flex: 0 0 90vw;
+        max-width: 90vw;
+        height: 55vw;
+    }
+
+    .contact-btn {
+        width: 90%;
+    }
+}
+
+/* --- OFFERS & PRICING SECTION --- */
+.urgent-banner {
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.pricing-img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Slight background to frame the image */
+}
+
+.pricing-card {
+    background: var(--secondary-bg);
+    border-radius: 20px;
+    padding: 40px 30px;
+    position: relative;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px var(--glow-color), inset 0 0 15px rgba(100, 204, 197, 0.1);
+    border-color: var(--glow-color);
+}
+
+/* UPDATED: Viral Package is now Featured */
+.pricing-card.featured {
+    border: 2px solid var(--glow-color);
+    box-shadow: 0 0 20px rgba(100, 204, 197, 0.3);
+    order: -1;
+    /* For flexbox ordering on desktop if needed, though grid handles it better naturally by structure */
+}
+
+@media (min-width: 992px) {
+
+    /* On Desktop, make the featured card slightly larger */
+    .pricing-card.featured {
+        transform: scale(1.05);
+        z-index: 5;
+    }
+
+    .pricing-card.featured:hover {
+        transform: scale(1.08) translateY(-10px);
+    }
+}
+
+.pricing-card.featured:hover {
+    box-shadow: 0 0 40px var(--glow-color), inset 0 0 20px rgba(100, 204, 197, 0.2);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--glow-color);
+    color: var(--primary-bg);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.price {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin: 20px 0;
+}
+
+.price del {
+    font-size: 0.5em;
+    color: #888;
+    display: block;
+    text-decoration: line-through;
+}
+
+.features-list {
+    list-style: none;
+    text-align: center;
+    margin: 20px 0 30px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.features-list li {
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.features-list li i {
+    color: var(--glow-color);
+    margin-left: 10px;
+}
+
+/* --- WIZARD MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 4000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wizard-container {
+    background: var(--primary-bg);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+    border: 1px solid var(--glow-color);
+    box-shadow: 0 0 30px rgba(100, 204, 197, 0.2);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.active .wizard-container {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--heading-color);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--glow-color);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--glow-color);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.option-item {
+    position: relative;
+}
+
+.option-item input {
+    position: absolute;
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.option-label {
+    display: block;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.option-item input:checked+.option-label {
+    background: var(--glow-color);
+    color: var(--primary-bg);
+    border-color: var(--glow-color);
+    font-weight: bold;
+}
+
+.wizard-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* --- PACKAGE OVERLAY --- */
+.package-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-bg);
+    z-index: 3000;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.close-overlay {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 3001;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.close-overlay:hover {
+    background: var(--glow-color);
+    color: var(--primary-bg);
+    border-color: var(--glow-color);
+}
+
+.package-header {
+    width: 100%;
+    height: 85vh;
+    /* Increased from 50vh to show image clearly */
+    min-height: 500px;
+    position: relative;
+}
+
+.package-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark background to contrast with the image */
+}
+
+.package-header-content {
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+    max-width: 1200px;
+    text-align: right;
+}
+
+.package-header h2 {
+    font-size: 3.5em;
+    color: var(--heading-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+}
+
+.package-body {
+    padding: 40px 20px 80px;
+    max-width: 900px !important;
+}
+
+.pkg-section {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pkg-section h3 {
+    color: var(--glow-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.pkg-section p {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+.pkg-features-list {
+    list-style: none;
+}
+
+.pkg-features-list li {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pkg-features-list li i {
+    color: var(--glow-color);
+    margin-left: 15px;
+    font-size: 1.2em;
+}
+
+.pkg-price {
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.pkg-actions {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.pkg-actions button {
+    padding: 20px 60px;
+    font-size: 1.5em;
+    border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+    .package-header h2 {
+        font-size: 2.2em;
+    }
+
+    .package-header {
+        height: 60vh;
+        min-height: 350px;
+    }
+
+    .pkg-section {
+        padding: 20px;
+    }
+}
+
+/* --- CUSTOM PACKAGE SECTION --- */
+.custom-pkg-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.custom-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly different from transparent */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.service-details {
+    text-align: right;
+    flex-grow: 1;
+}
+
+html[dir="ltr"] .service-details {
+    text-align: left;
+}
+
+.service-details h3 {
+    font-size: 1.2em;
+    margin: 0 0 5px;
+    color: var(--text-color);
+    min-height: 0;
+}
+
+.srv-note {
+    font-size: 0.9em;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+html[dir="ltr"] .qty-control {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--heading-color);
+    color: var(--text-dark-on-accent);
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.qty-btn:hover {
+    background: var(--accent-blue-dark);
+}
+
+.qty-input {
+    width: 50px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.1em;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.qty-input:focus {
+    outline: none;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-total-area {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.total-label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.total-amount {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(100, 204, 197, 0.3);
+}
+
+/* Filming Card Specifics */
+.filming-card {
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.filming-inputs-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.f-control {
+    text-align: center;
+}
+
+.f-label {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .filming-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .filming-card .service-details {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .filming-inputs-wrapper {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .service-details {
+        text-align: center;
+        width: 100%;
+    }
+}
