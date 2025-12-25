@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- META DESCRIPTION FOR SEO -->
+    <meta name="description"
+        content="بورتفوليو يوسف غنام، مصمم جرافيك ومحرر فيديو محترف. متخصص في تصميم الهوية البصرية، مونتاج الفيديو، وإنشاء المحتوى الجذاب.">
+
+    <title>Youssef Ghannam - Graphic Designer & Video Editor</title>
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="C.CSS">
+</head>
+
+<body>
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="navbar-brand" data-lang-key="brand">YG</a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about" data-lang-key="nav_about">من أنا</a></li>
+                <li><a href="#offers" data-lang-key="nav_offers">العروض</a></li>
+                <li><a href="#portfolio" data-lang-key="nav_portfolio">أعمالي</a></li>
+                <li><a href="#skills" data-lang-key="nav_skills">المهارات</a></li>
+                <li><a href="#testimonials" data-lang-key="nav_testimonials">آراء العملاء</a></li>
+                <li><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+                <li><button id="lang-switcher" class="nav-button">English</button></li>
+                <li><button id="theme-switcher" class="nav-button"><i class="fas fa-sun"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header/Hero Section -->
+    <header id="home" class="hero-section">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content">
+            <img src="../images/00000.png" alt="Youssef Ghannam Profile" class="profile-pic">
+            <h1 data-lang-key="hero_name">Youssef Ghannam</h1>
+            <p class="tagline" data-lang-key="hero_tagline">Graphic Designer & Video Editor</p>
+            <a href="#about" class="btn primary-btn">
+                <span data-lang-key="hero_button">اكتشف المزيد</span>
+                <i class="fas fa-arrow-down" style="margin-right: 8px;"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Me Section -->
+        <section id="about" class="about-wrapper animated-section">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+            <div class="glass-section">
+                <div class="container">
+                    <h2 data-lang-key="about_title">من أنا (About Me)</h2>
+                    <div id="about-content">
+                        <p data-lang-key="about_p1">
+                            <!-- Content loaded via JS -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section id="offers" class="section-padding animated-section">
+            <div class="container">
+                <h2 data-lang-key="offers_title" style="text-align:center;">باقات العروض الخاصة</h2>
+
+                <div style="text-align: center; width: 100%;">
+                    <div class="urgent-banner">
+                        <i class="fas fa-exclamation-triangle"></i> العروض متاحة لـ 5 مدرسين فقط شهرياً للحفاظ على
+                        الجودة (متبقي 2 مكان فقط)
+                    </div>
+                </div>
+
+                <div class="pricing-grid">
+
+                    <!-- Basic Package (Weekly) -->
+                    <div class="pricing-card">
+                        <img src="../images/BAC1.png" alt="Weekly Package" class="pricing-img">
+                        <h3 data-lang-key="offer1_title">باقة المتابعة الأسبوعية</h3>
+                        <div class="price">1250 EGP <del>1500</del></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer1_f1">4 فيديوهات مونتاج
+                                    احترافي</span></li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer1_f2">4 صور مصغرة جذابة</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer1_f3">تحسين جودة الصوت
+                                    والصورة</span></li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer1_f4">تسليم سريع (48 ساعة)</span>
+                            </li>
+                            <li><i class="fas fa-gift"></i> <span data-lang-key="offer1_f5">خطة نشر مقترحة
+                                    (Bonus)</span></li>
+                        </ul>
+                        <a href="#" class="btn primary-btn view-package-detail" data-package-id="basic">التفاصيل /
+                            حجز</a>
+                    </div>
+
+                    <!-- VIP Package (Viral & Trending) - FEATURED/BEST VALUE -->
+                    <div class="pricing-card featured">
+                        <div class="badge" data-lang-key="best_value">الأكثر طلباً</div>
+                        <img src="../images/BAC3.png" alt="Viral Package" class="pricing-img">
+                        <h3 data-lang-key="offer3_title">باقة الانتشار والتريند</h3>
+                        <div class="price" data-lang-key="contact_for_price">تواصل للسعر</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer3_f1">6 فيديوهات شرح طويلة</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer3_f2">3 فيديوهات ريلز (Viral
+                                    Style)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer3_f3">5 صور مصغرة عالية
+                                    الجودة</span></li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer3_f4">6 بوسترات إعلانية</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer3_f5">خطة محتوى تفاعلية</span>
+                            </li>
+                            <li><i class="fas fa-star"></i> <span data-lang-key="offer3_f6">أولوية قصوى في
+                                    التنفيذ</span></li>
+                        </ul>
+                        <a href="#" class="btn primary-btn view-package-detail" data-package-id="vip">التفاصيل / حجز</a>
+                    </div>
+
+                    <!-- Pro Package (Intensive) -->
+                    <div class="pricing-card">
+                        <img src="../images/BAC2.png" alt="Intensive Course" class="pricing-img">
+                        <h3 data-lang-key="offer2_title">باقة المنهج المكثف</h3>
+                        <div class="price" data-lang-key="contact_for_price">تواصل للسعر</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer2_f1">8 فيديوهات شرح/محتوى</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer2_f2">8 صور مصغرة احترافية</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer2_f3">4 بوسترات إعلانية</span>
+                            </li>
+                            <li><i class="fas fa-check"></i> <span data-lang-key="offer2_f4">إدارة حملات إعلانية
+                                    مجاناً</span></li>
+                            <li><i class="fas fa-video"></i> <span data-lang-key="offer2_f6">4 فيديوهات ريلز قوية</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn primary-btn view-package-detail" data-package-id="pro">التفاصيل / حجز</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section-padding animated-section">
+            <div class="container">
+                <h2 data-lang-key="portfolio_title">بعض من أعمالي</h2>
+                <div class="portfolio-grid">
+                    <!-- Project: BUNZ -->
+                    <div class="portfolio-item card">
+                        <a href="https://www.behance.net/gallery/227914985/BUNZ-Identity-Campaign-Design-for-a-Burger"
+                            target="_blank">
+                            <img src="../images/Thumbnail - Size.png" alt="BUNZ Restaurant Brand Identity">
+                        </a>
+                        <h3 data-lang-key="portfolio5_title">BUNZ – تصميم هوية بصرية لمطعم</h3>
+                        <p data-lang-key="portfolio5_p">تم إنشاء هوية بصرية كاملة لـ BUNZ، وهو مطعم برجر عصري.</p>
+                        <a href="https://www.behance.net/gallery/227914985/BUNZ-Identity-Campaign-Design-for-a-Burger"
+                            target="_blank" class="btn" data-lang-key="portfolio_button">عرض المشروع</a>
+                    </div>
+                    <!-- Project 1 -->
+                    <div class="portfolio-item card">
+                        <a href="https://www.behance.net/gallery/227664051/Mini-Identity-Concept-Pizza-Steve"
+                            target="_blank">
+                            <img src="../images/Thumbnail.png" alt="Restaurant Brand Redesign">
+                        </a>
+                        <h3 data-lang-key="portfolio1_title">إعادة تصميم علامة تجارية لمطعم</h3>
+                        <p data-lang-key="portfolio1_p">قمت بإعادة تصميم الهوية التجارية الكاملة لمطعمين محليين.</p>
+                        <a href="https://www.behance.net/gallery/227664051/Mini-Identity-Concept-Pizza-Steve"
+                            target="_blank" class="btn" data-lang-key="portfolio_button">عرض المشروع</a>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="portfolio-item card">
+                        <a href="https://www.facebook.com/profile.php?id=61555408544326" target="_blank">
+                            <img src="../images/post.jpg" alt="Educational Content Series">
+                        </a>
+                        <h3 data-lang-key="portfolio2_title">سلسلة محتوى تعليمي</h3>
+                        <p data-lang-key="portfolio2_p">صممت وأنتجت أكثر من 150 مادة مرئية جذابة للخدمات التعليمية.</p>
+                        <a href="https://www.facebook.com/profile.php?id=61555408544326" target="_blank" class="btn"
+                            data-lang-key="portfolio_button">عرض المشروع</a>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="portfolio-item card">
+                        <a href="https://www.facebook.com/share/v/1DgySvFobU/" target="_blank">
+                            <img src="../images/3.png" alt="Reels Video Editing">
+                        </a>
+                        <h3 data-lang-key="portfolio3_title">مونتاج فيديوهات Reels</h3>
+                        <p data-lang-key="portfolio3_p">متخصص في تحرير الفيديو سريع الخطى والجذاب.</p>
+                        <a href="https://www.facebook.com/share/v/1DgySvFobU/" target="_blank" class="btn"
+                            data-lang-key="portfolio_button">عرض المشروع</a>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="portfolio-item card">
+                        <a href="https://youtu.be/DZeRlIpi7vA?si=EObJrEPw734aOP8d" target="_blank">
+                            <img src="../images/44.png" alt="Thumbnail Design">
+                        </a>
+                        <h3 data-lang-key="portfolio4_title">تصميم الصور المصغرة</h3>
+                        <p data-lang-key="portfolio4_p">قمت بإنشاء صور مصغرة جذابة ومغرية للنقر لمقاطع فيديو يوتيوب.</p>
+                        <a href="https://youtu.be/DZeRlIpi7vA?si=EObJrEPw734aOP8d" target="_blank" class="btn"
+                            data-lang-key="portfolio_button">عرض المشروع</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding animated-section">
+            <div class="container">
+                <h2 data-lang-key="skills_title">المهارات</h2>
+                <div class="skills-grid">
+                    <div class="skill-card card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3 data-lang-key="skill1_title">التصميم الجرافيكي</h3>
+                        <p data-lang-key="skill1_p">إتقان أدوات Adobe مثل فوتوشوب، إليستريتور، وإن ديزاين.</p>
+                    </div>
+                    <div class="skill-card card">
+                        <i class="fas fa-video"></i>
+                        <h3 data-lang-key="skill2_title">تحرير ومونتاج الفيديو</h3>
+                        <p data-lang-key="skill2_p">خبرة في استخدام Adobe Premiere Pro و CapCut.</p>
+                    </div>
+                    <div class="skill-card card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3 data-lang-key="skill5_title">الإبداع والابتكار</h3>
+                        <p data-lang-key="skill5_p">توليد أفكار جديدة وتقديم حلول تصميم فريدة.</p>
+                    </div>
+                    <div class="skill-card card">
+                        <i class="fas fa-users-cog"></i>
+                        <h3 data-lang-key="skill7_title">التواصل والتعاون</h3>
+                        <p data-lang-key="skill7_p">بناء علاقات قوية مع العملاء.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="animated-section">
+            <div class="container" style="position: relative; z-index: 1;">
+                <h2 data-lang-key="testimonials_title">آراء العملاء</h2>
+                <div class="testimonial-container" id="testimonial-slider">
+                    <div class="testimonial-card"><img src="../images/s (1).png" alt="Client 1"></div>
+                    <div class="testimonial-card"><img src="../images/s (2).png" alt="Client 2"></div>
+                    <div class="testimonial-card"><img src="../images/s (3).png" alt="Client 3"></div>
+                    <div class="testimonial-card"><img src="../images/s (4).png" alt="Client 4"></div>
+                    <div class="testimonial-card"><img src="../images/s (5).png" alt="Client 5"></div>
+                </div>
+                <div class="testimonial-controls">
+                    <button id="scroll-left">&larr;</button>
+                    <button id="scroll-right">&rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="glass-section animated-section section-padding">
+            <div class="container">
+                <h2 data-lang-key="contact_title">هل أنت مستعد لتحويل رؤيتك إلى حقيقة؟</h2>
+                <p data-lang-key="contact_p">لنتواصل ونناقش كيف يمكنني مساعدة علامتك التجارية على التألق.</p>
+
+                <div class="contact-buttons">
+                    <a href="https://wa.me/201062680608" class="contact-btn whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> <span data-lang-key="contact_whatsapp">واتساب</span>
+                    </a>
+                    <a href="https://www.instagram.com/youssef.ghannam_/" class="contact-btn instagram" target="_blank">
+                        <i class="fab fa-instagram"></i> <span data-lang-key="contact_instagram">انستغرام</span>
+                    </a>
+                    <a href="mailto:yossefghannam1@gmail.com" class="contact-btn email">
+                        <i class="fas fa-envelope"></i> <span data-lang-key="contact_email">البريد الإلكتروني</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p id="footer-text" data-lang-key="footer_text">&copy; 2025 Youssef Ghannam. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PACKAGES OVERLAY -->
+    <div id="package-overlay" class="package-overlay">
+        <button class="close-overlay">خروج (Close)</button>
+        <div class="package-header">
+            <img id="pkg-img" src="" alt="Package Header">
+            <div class="package-header-content">
+                <h2 id="pkg-title">اسم الباقة</h2>
+            </div>
+        </div>
+        <div class="container package-body">
+            <div class="pkg-section">
+                <h3>لمن هذه الباقة؟ (Audience)</h3>
+                <p id="pkg-audience">وصف الجمهور...</p>
+            </div>
+            <div class="pkg-section">
+                <h3>المميزات بالتفصيل</h3>
+                <ul id="pkg-features" class="pkg-features-list">
+                    <!-- Features injected via JS -->
+                </ul>
+            </div>
+            <div class="pkg-section">
+                <h3>التكلفة</h3>
+                <div id="pkg-price" class="pkg-price">000 EGP</div>
+            </div>
+            <div class="pkg-actions">
+                <button id="pkg-book-btn" class="btn primary-btn">ابدأ الآن (إرسال الطلب)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WIZARD FORM MODAL -->
+    <div id="wizard-modal" class="modal-overlay">
+        <div class="wizard-container">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+
+            <form id="wizard-form">
+                <!-- Step 1: Info -->
+                <div class="step active" data-step="1">
+                    <h3>الخطوة 1: بيانات التواصل</h3>
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" name="name" class="form-control" required placeholder="مثال: أحمد محمد">
+                    </div>
+                    <div class="form-group">
+                        <label>رقم واتساب (هام)</label>
+                        <input type="text" name="phone" class="form-control" required placeholder="+20 1xxxxxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label>صفتك (مدرس، شركة، صانع محتوى...)</label>
+                        <input type="text" name="role" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رابط منصتك الحالية (إن وجد)</label>
+                        <input type="text" name="link" class="form-control">
+                    </div>
+                </div>
+
+                <!-- Step 2: Project Info -->
+                <div class="step" data-step="2">
+                    <h3>الخطوة 2: تفاصيل المشروع</h3>
+                    <div class="form-group">
+                        <label>ما هو هدفك الرئيسي؟</label>
+                        <div class="options-grid">
+                            <div class="option-item">
+                                <input type="checkbox" name="goal" value="sales" id="g1">
+                                <label for="g1" class="option-label">زيادة المبيعات/الطلاب</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" name="goal" value="views" id="g2">
+                                <label for="g2" class="option-label">زيادة المشاهدات</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" name="goal" value="branding" id="g3">
+                                <label for="g3" class="option-label">تحسين شكل البراند</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" name="goal" value="content" id="g4">
+                                <label for="g4" class="option-label">الاستمرارية في النشر</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>نوع الخدمة المطلوبة</label>
+                        <select name="service" class="form-control" required>
+                            <option value="montage">مونتاج فقط</option>
+                            <option value="full-production">إنتاج كامل (تصوير + مونتاج)</option>
+                            <option value="graphic">تصميم جرافيك (هوية/سوشيال)</option>
+                            <option value="package">باقة شهرية متكاملة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>هل لديك محتوى مصور جاهز؟</label>
+                        <select name="status" class="form-control">
+                            <option value="ready">نعم، جاهز للمونتاج</option>
+                            <option value="filming-needed">لا، أحتاج تصوير</option>
+                            <option value="idea-phase">ما زلت في مرحلة الفكرة</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3: Audience & Style -->
+                <div class="step" data-step="3">
+                    <h3>الخطوة 3: الجمهور والستايل</h3>
+                    <div class="form-group">
+                        <label>مين جمهورك المستهدف؟</label>
+                        <input type="text" name="audience" class="form-control"
+                            placeholder="مثال: طلاب ثانوية عامة، أصحاب مطاعم...">
+                    </div>
+                    <div class="form-group">
+                        <label>ستايل الفيديوهات المفضل</label>
+                        <select name="style" class="form-control">
+                            <option value="documentary">وثائقي / هادئ</option>
+                            <option value="fast-paced">سريع / تريندي (Alex Hormozi style)</option>
+                            <option value="professional">رسمي / تعليمي</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>المنصات المستهدفة</label>
+                        <div class="options-grid">
+                            <div class="option-item"><input type="checkbox" name="platform" value="fb" id="p1"><label
+                                    for="p1" class="option-label">Facebook</label></div>
+                            <div class="option-item"><input type="checkbox" name="platform" value="yt" id="p2"><label
+                                    for="p2" class="option-label">YouTube</label></div>
+                            <div class="option-item"><input type="checkbox" name="platform" value="tt" id="p3"><label
+                                    for="p3" class="option-label">TikTok</label></div>
+                            <div class="option-item"><input type="checkbox" name="platform" value="ig" id="p4"><label
+                                    for="p4" class="option-label">Instagram</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>متى تريد البدء؟</label>
+                        <input type="text" name="timeline" class="form-control" placeholder="مثال: الأسبوع القادم">
+                    </div>
+                </div>
+            </form>
+
+            <div class="wizard-buttons">
+                <button id="prevBtn" class="btn">السابق</button>
+                <button id="nextBtn" class="btn primary-btn">التالي</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Scripts -->
+    <script src="J.JS"></script>
+</body>
+
+</html>
