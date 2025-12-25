@@ -38,10 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
             offer3_title: "Viral & Trending",
             offer3_f1: "6 Long Explainer Videos",
             offer3_f2: "3 Viral Style Reels",
-            offer3_f3: "5 High-Quality Thumbnails",
+            offer3_f3: "6 High-Quality Thumbnails",
             offer3_f4: "6 Strong Ad Posters",
             offer3_f5: "Interactive Content Plan",
-            offer3_f6: "Top Priority in Execution",
+            offer3_f6: "Top Priority for Execution & Edits",
+            offer3_extra: "2 Review/Rules Posters",
+            offer1_extra: "Review Poster",
+            offer2_extra: "Book Cover Design",
+            offer2_new1: "Rules Poster or Summary",
+            offer2_new2: "Certificate",
+            offer2_new3: "Ad Campaign Scheduling File (free)",
+            offer2_f3: "8 Social Media Ad Posters",
 
             best_value: "Best Value",
             contact_for_price: "Contact for Price",
@@ -70,9 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
             contact_title: "Ready to Bring Your Vision to Life?",
             contact_p: "Let's connect and discuss how I can help your brand shine.",
             contact_whatsapp: "WhatsApp",
-            contact_instagram: "Instagram",
-            contact_email: "Email",
-            footer_text: "&copy; 2025 Youssef Ghannam. All rights reserved."
+            footer_text: "&copy; 2025 Youssef Ghannam. All rights reserved.",
+            custom_pkg_title: "Design Your Own Package",
+            custom_pkg_desc: "These are standard individual rates. (Save more by choosing our monthly packages above 👆)",
+            srv_filming: "Lecture Filming",
+            srv_filming_note: "Select Lectures & Duration per Lecture",
+            lbl_lectures: "Lectures",
+            lbl_hours_per_lec: "Hours/Lecture",
+            srv_thumbnail: "Thumbnail",
+            srv_thumbnail_note: "High Quality",
+            srv_reels: "Reels Video (1 Minute)",
+            srv_reels_note: "Pro Editing",
+            srv_ad: "Ad Design",
+            srv_ad_note: "Social Media Poster",
+            srv_book_cover: "Book Cover",
+            srv_book_cover_note: "Professional Print Design",
+            srv_certificate: "Certificate",
+            srv_certificate_note: "Honorary Design for Students",
+            srv_rules_poster: "Rules Poster",
+            srv_rules_poster_note: "Classroom Guidelines Design",
+            custom_total_label: "Estimated Total:",
+            custom_send_btn: "Send Request Now",
+            custom_calc_btn: "Calculate Price",
+            custom_edit_btn: "Edit",
+            custom_hint: "For better rates, check our monthly packages above!"
         },
         ar: {
             brand: "YG",
@@ -97,23 +125,29 @@ document.addEventListener('DOMContentLoaded', () => {
             offer1_f4: "تسليم سريع خلال 48 ساعة من التصوير",
             offer1_f5: "خطة نشر مقترحة (Bonus)",
 
+            offer1_extra: "بوستر مراجعة",
+
             // Intensive Package (Arabic)
             offer2_title: "باقة المنهج المكثف",
             offer2_f1: "8 فيديوهات شرح/محتوى (2 أسبوعياً)",
             offer2_f2: "8 صور مصغرة احترافية",
-            offer2_f3: "4 تصميمات بوسترز للسوشيال ميديا للإعلانات",
-            offer2_f4: "إدارة الحملات الإعلانية مجاناً (Setup & Monitoring)",
+            offer2_f3: "8 تصميمات بوسترز للسوشيال ميديا للإعلانات",
+            offer2_f4: "ملف إدارة جدولة الحملات الإعلانية مجاناً (Setup & Monitoring)",
             offer2_f5: "نصائح لتحسين الظهور أمام الكاميرا",
             offer2_f6: "4 فيديوهات ريلز قوية",
+            offer2_extra: "تصميم غلاف مذكرة",
+            offer2_new1: "تصميم بوستر قوانين أو ملخص",
+            offer2_new2: "شهادة تقدير",
 
             // Viral Package (Arabic) - FEATURED
             offer3_title: "باقة الانتشار والتريند",
             offer3_f1: "6 فيديوهات شرح طويلة (يوتيوب/فيسبوك)",
             offer3_f2: "3 فيديوهات ريلز سريعة الانتشار (Viral Style)",
-            offer3_f3: "5 صور مصغرة عالية الجودة",
+            offer3_f3: "6 صور مصغرة عالية الجودة",
             offer3_f4: "6 بوسترات إعلانية قوية",
             offer3_f5: "خطة محتوى تفاعلية لزيادة المتابعين",
             offer3_f6: "أولوية قصوى في التنفيذ والتعديلات",
+            offer3_extra: "2 بوستر القوانين مراجعة",
 
             best_value: "الأكثر طلباً (Best Value)",
             contact_for_price: "تواصل للسعر",
@@ -144,7 +178,30 @@ document.addEventListener('DOMContentLoaded', () => {
             contact_whatsapp: "واتساب",
             contact_instagram: "انستغرام",
             contact_email: "البريد الإلكتروني",
-            footer_text: "© 2025 يوسف غنام. جميع الحقوق محفوظة."
+            footer_text: "© 2025 يوسف غنام. جميع الحقوق محفوظة.",
+            custom_pkg_title: "صمم باقتك بنفسك",
+            custom_pkg_desc: "الأسعار هنا هي أسعار الخدمات الفردية. (وفر أكثر باختيار الباقات الشهرية بالأعلى 👆)",
+            srv_filming: "تصوير محاضرات (فيديو)",
+            srv_filming_note: "حدد عدد المحاضرات ومدة المحاضرة الواحدة",
+            lbl_lectures: "المحاضرات",
+            lbl_hours_per_lec: "ساعات لكل محاضرة",
+            srv_thumbnail: "صورة مصغرة (Thumbnail)",
+            srv_thumbnail_note: "جودة عالية جذابة",
+            srv_reels: "فيديو ريلز (1 دقيقة)",
+            srv_reels_note: "مونتاج احترافي سريع",
+            srv_ad: "تصميم إعلان (Poster)",
+            srv_ad_note: "سوشيال ميديا",
+            srv_book_cover: "غلاف مذكرة (Book Cover)",
+            srv_book_cover_note: "تصميم احترافي جاهز للطباعة",
+            srv_certificate: "شهادة تقدير (Certificate)",
+            srv_certificate_note: "تصميم مميز لتكريم الطلاب",
+            srv_rules_poster: "بوستر القوانين (Rules)",
+            srv_rules_poster_note: "تصميم إرشادي للقاعة/السنتر",
+            custom_total_label: "السعر الإجمالي (Individual Pricing):",
+            custom_send_btn: "أرسل الطلب الآن",
+            custom_calc_btn: "احسب السعر",
+            custom_edit_btn: "تعديل",
+            custom_hint: "للحصول على أسعار أوفر، راجع الباقات الشهرية بالأعلى!"
         }
     };
 
@@ -317,41 +374,43 @@ document.addEventListener('DOMContentLoaded', () => {
             features: [
                 '4 فيديوهات مونتاج احترافي (فيديو كل أسبوع)',
                 '4 صور مصغرة (Thumbnails) جذابة لزيادة النقرات',
-                'تحسين جودة الصوت والصورة الحالية',
                 'تسليم سريع خلال 48 ساعة من التصوير',
-                'خطة نشر مقترحة (Bonus)'
+                'خطة نشر مقترحة (Bonus)',
+                'بوستر مراجعة'
             ],
-            price: '1250 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">1500</span>'
+            price: '1500 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">2000</span>'
         },
         'pro': {
             title: 'باقة المنهج المكثف',
             image: '../images/BAC2.png',
-            audience: 'صممت خصيصاً للمدرسين الذين يصورون منهجاً كاملاً ويحتاجون إلى إنتاج غزير بجودة عالية مع تصميمات تسويقية.',
+            audience: 'صممت خصيصاً للمدرسين الذين يصورون منهجاً كاملاً ويحتاجون إلى إنتاج غزير بجودة عالية.',
             features: [
                 '8 فيديوهات شرح/محتوى (2 أسبوعياً)',
                 '8 صور مصغرة احترافية',
-                '4 تصميمات بوسترز للسوشيال ميديا للإعلانات',
-                'إدارة الحملات الإعلانية مجاناً (Setup & Monitoring)',
-                'نصائح لتحسين الظهور أمام الكاميرا',
+                '8 تصميمات بوسترز للسوشيال ميديا للإعلانات',
                 '4 فيديوهات ريلز قوية',
-                'تصميم غلاف مراجعة',
-                'تصميم بوستر مراجعة'
+                'تصميم غلاف مذكرة',
+                'تصميم بوستر قوانين أو ملخص',
+                'شهادة تقدير',
+                'ملف إدارة جدولة الحملات الإعلانية مجاناً (Setup & Monitoring)',
+                'نصائح لتحسين الظهور أمام الكاميرا'
             ],
-            price: 'تواصل للسعر'
+            price: '6000 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">6500</span>'
         },
         'vip': {
             title: 'باقة الانتشار والتريند',
             image: '../images/BAC3.png',
-            audience: 'للأكاديميات والمدرسين الكبار الباحثين عن التوسع السريع والسيطرة على منصات الفيديو القصيرة (TikTok/Reels/Shorts).',
+            audience: 'للأكاديميات والمدرسين الكبار الباحثين عن التوسع السريع والسيطرة على المنصات.',
             features: [
                 '6 فيديوهات شرح طويلة (يوتيوب/فيسبوك)',
                 '3 فيديوهات ريلز سريعة الانتشار (Viral Style)',
-                '5 صور مصغرة عالية الجودة',
+                '6 صور مصغرة عالية الجودة',
                 '6 بوسترات إعلانية قوية',
                 'خطة محتوى تفاعلية لزيادة المتابعين',
-                'أولوية قصوى في التنفيذ والتعديلات'
+                'أولوية قصوى في التنفيذ والتعديلات',
+                '2 بوستر القوانين مراجعة'
             ],
-            price: 'تواصل للسعر'
+            price: '4250 EGP <span style="font-size:0.5em; text-decoration:line-through; color:#aaa">5000</span>'
         }
     };
 
@@ -517,9 +576,150 @@ document.addEventListener('DOMContentLoaded', () => {
             packageOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
             currentStep = 1;
-            updateWizard();
-            wizardForm.reset();
         }, 1000);
+    }
+
+    // --- CUSTOM PACKAGE LOGIC (UPDATED) ---
+    const customInputs = document.querySelectorAll('.custom-pkg-wrapper .qty-input');
+    const calcCustomBtn = document.getElementById('calc-custom-btn');
+    const customSummary = document.getElementById('custom-summary');
+    const newTotalDisplay = document.getElementById('new-total-display');
+    const oldTotalDisplay = document.getElementById('old-total-display');
+    const savingsDisplay = document.getElementById('savings-display');
+    const sendCustomOrderBtn = document.getElementById('send-custom-order');
+    const reCalcBtn = document.getElementById('re-calc-btn');
+
+    // Helper to calculate totals
+    function calculateTotals() {
+        let totalNew = 0;
+
+        // 1. Calculate Filming (Special Logic: Lectures * HoursPerLec * rate)
+        const filmLecInput = document.querySelector('.film-lectures-input');
+        const filmHourInput = document.querySelector('.film-hours-input');
+
+        if (filmLecInput && filmHourInput) {
+            const lectures = parseInt(filmLecInput.value) || 0;
+            const hoursPerLec = parseInt(filmHourInput.value) || 0;
+            const rate = 150; // Rate per hour
+
+            if (lectures > 0 && hoursPerLec > 0) {
+                totalNew += (lectures * hoursPerLec * rate);
+            }
+        }
+
+        // 2. Calculate Other Inputs
+        customInputs.forEach(input => {
+            // Skip filming inputs as they are handled above
+            if (input.classList.contains('film-lectures-input') || input.classList.contains('film-hours-input')) return;
+
+            const price = parseFloat(input.dataset.price);
+            const qty = parseInt(input.value) || 0;
+            if (qty > 0) {
+                totalNew += price * qty;
+            }
+        });
+
+        return { totalNew };
+    }
+
+    // Input Step Buttons
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = btn.parentElement.querySelector('input');
+            let val = parseInt(input.value) || 0;
+            if (btn.classList.contains('plus')) {
+                val++;
+            } else {
+                if (val > 0) val--;
+            }
+            input.value = val;
+            // Hide summary if user changes quantity, forcing them to re-calculate
+            if (customSummary) customSummary.style.display = 'none';
+            if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
+        });
+    });
+
+    // Reset view if input changes manually
+    if (customInputs) {
+        customInputs.forEach(inp => {
+            inp.addEventListener('input', () => {
+                if (customSummary) customSummary.style.display = 'none';
+                if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
+            });
+        });
+    }
+
+    // Calculate Button Click
+    if (calcCustomBtn) {
+        calcCustomBtn.addEventListener('click', () => {
+            const { totalNew } = calculateTotals();
+
+            if (totalNew === 0) {
+                // Determine current lang for alert
+                const lang = document.documentElement.lang || 'ar';
+                const msg = lang === 'ar' ? 'يرجى اختيار خدمة واحدة على الأقل.' : 'Please select at least one service.';
+                alert(msg);
+                return;
+            }
+
+            // Update displays
+            if (newTotalDisplay) newTotalDisplay.innerText = totalNew;
+
+            // Show summary, hide calc button
+            if (customSummary) customSummary.style.display = 'block';
+            if (calcCustomBtn) calcCustomBtn.style.display = 'none';
+        });
+    }
+
+    // Edit Button Click
+    if (reCalcBtn) {
+        reCalcBtn.addEventListener('click', () => {
+            if (customSummary) customSummary.style.display = 'none';
+            if (calcCustomBtn) calcCustomBtn.style.display = 'inline-block';
+        });
+    }
+
+    // Send WhatsApp
+    if (sendCustomOrderBtn) {
+        sendCustomOrderBtn.addEventListener('click', () => {
+            let items = [];
+            const { totalNew } = calculateTotals();
+
+            // 1. Add Filming Item
+            const filmLecInput = document.querySelector('.film-lectures-input');
+            const filmHourInput = document.querySelector('.film-hours-input');
+            if (filmLecInput && filmHourInput) {
+                const lectures = parseInt(filmLecInput.value) || 0;
+                const hours = parseInt(filmHourInput.value) || 0;
+                if (lectures > 0 && hours > 0) {
+                    const cost = lectures * hours * 150;
+                    items.push(`- تصوير محاضرات: ${lectures} محاضرات × ${hours} ساعات (الإجمالي: ${cost} EGP)`);
+                }
+            }
+
+            // 2. Add Other Items
+            customInputs.forEach(input => {
+                if (input.classList.contains('film-lectures-input') || input.classList.contains('film-hours-input')) return;
+
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const name = input.dataset.name;
+                    const price = parseFloat(input.dataset.price);
+                    items.push(`- ${name}: ${qty} (سعر: ${price * qty} EGP)`);
+                }
+            });
+
+            if (items.length === 0) return;
+
+            let msg = `*طلب باقة مخصصة (Custom Package)* 🛠️\n\n`;
+            msg += items.join('\n');
+            msg += `\n\n*الإجمالي (Individual Price):* ${totalNew} EGP`;
+            msg += `\n\nأرغب في تنفيذ هذه الخدمات.`;
+
+            const url = `https://wa.me/201062680608?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
     }
 
 });
